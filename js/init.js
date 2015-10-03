@@ -21,7 +21,6 @@ $(document).ready(function() {
     gapi.client.setApiKey('AIzaSyAbhJQT4oo9TrL94KkJOvEg7AZfCyxMIAc');
     gapi.client.load('urlshortener', 'v1').then(makeRequest);
   }
-</script>
 
 
 });
