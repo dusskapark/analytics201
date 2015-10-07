@@ -44,8 +44,9 @@ $(document).ready(function() {
         "count": 5,
         "searchKeyword": item.prodNm,
         "order": "R"},
-        "success": search_callback,
-        "fail": "console.log('fail')"
+        search_callback
+        // "success": search_callback,
+        // "fail": "console.log('fail')"
       );
 
       function search_callback( data ) {
