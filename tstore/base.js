@@ -22,14 +22,8 @@ $(document).ready(function() {
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
-
-      var collapsible ="<li class='collection-item avatar' id='"+ item.pkgNm +"'>" +
-      "<img width='28px' height='28px' src='http://tv03.search.naver.net/thm?quality=5&q=https://phinf.pstatic.net/blogpfthumb/20140305_226/nvappstore_1394012930943lHElx_PNG/android_512X512_googleplay.png?type=s40' class='circle'>"+
-      "<span class='title'>"+ item.prodNm +"</span>"+
-          // "<p>Lorem ipsum dolor sit amet.</p>"+
-        "</li>";
-
-      $("#bobcard").append(collapsible);
+      $('#bobcard').append(item.pkgNm);
+      $('#bobcard').append(item.prodNm);
 
 
       // 플래닛 API를 콜한다
@@ -42,19 +36,22 @@ $(document).ready(function() {
         "count": 5,
         "searchKeyword": item.prodNm,
         "order": "R"},
-        search_callback (data, item.pkgNm)
+        search_callback
         // "success": search_callback,
         // "fail": "console.log('fail')"
       );
 
-      function search_callback( data, item.pkgNm ) {
-        var pkgNm = item.pkgNm;
-        var badge = "<span class='new badge'>"+ data.tstore.totalCount +"</span>";
-        $('li').children().find(pkgNm).append(badge);
-        // console.log(data.tstore.totalCount);
+      function search_callback( data ) {
 
-        // var product  = data.tstore.products.product;
-        // console.log(product);
+        $('#bobcard').append(data.tstore.totalCount);
+
+        var list  = $.parseJSON(data.tstore.products.product);
+        var contentStr = "";
+        for (var i = 0; i < list.length; i++) {
+          contentStr += list[i].name;
+        }
+
+        $('#bobcard').append(contentStr);
 
         // product.forEach(function(v,i){
         //   var aid = v;
