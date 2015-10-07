@@ -22,8 +22,8 @@ $(document).ready(function() {
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
-      // $('#bobcard').append(item.pkgNm + "<span id='"+ i +"'>  "+ item.prodNm +"</span>");
-      // $('#bobcard').append(item.prodNm + "<br>");
+      console.log(item.pkgNm);
+      console.log(item.prodNm);
 
 
       // 플래닛 API를 콜한다
@@ -43,8 +43,8 @@ $(document).ready(function() {
 
       function search_callback( data ) {
 
-        $('#bobcard').append(data.tstore.totalCount + "<br>");
-        $('#bobcard').append(data.tstore.products.product +  + "<br><br>");
+        console.log(data.tstore.totalCount);
+        console.log(data.tstore.products.product);
         // var contentStr = "";
         // for (var i = 0; i < list.length; i++) {
         //   contentStr += list[i].name;
