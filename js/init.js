@@ -1,26 +1,26 @@
 $(document).ready(function() {
 
-  function appendResults(text) {
-    var results = document.getElementById('results');
-    results.appendChild(document.createElement('P'));
-    results.appendChild(document.createTextNode(text));
-  }
 
-  function makeRequest() {
-    var request = gapi.client.urlshortener.url.get({
-      'shortUrl': 'http://goo.gl/fbsS'
-    });
-    request.then(function(response) {
-      appendResults(response.result.longUrl);
-    }, function(reason) {
-      console.log('Error: ' + reason.result.error.message);
-    });
-  }
 
   function init() {
+    var ROOT = 'https://your_app_id.appspot.com/_ah/api';
     gapi.client.setApiKey('AIzaSyAbhJQT4oo9TrL94KkJOvEg7AZfCyxMIAc');
-    gapi.client.load('urlshortener', 'v1').then(makeRequest);
-  }
+
+    gapi.client.load('menuOfDate', 'v1', function() {
+      doSomethingAfterLoading();
+    }, ROOT);
+
+};
 
 
-});
+  doSomethingAfterLoading = function (json) {
+    var apisToLoad;
+    var callback = function() {
+      if (--apisToLoad == 0) {
+        console.log(json)
+      }
+    }
+
+    apisToLoad = 1; // must match number of calls to gapi.client.load()
+    gapi.client.load('menuOfDate', 'v1', callback, apiRoot);
+  };

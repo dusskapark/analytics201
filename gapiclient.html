@@ -1,0 +1,35 @@
+<html>
+<head>
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <script>
+    function init() {
+        var ROOT = "https://kr-bobplanet.appspot.com/_ah/api";
+        gapi.client.load('bobplanetApi', 'v1', function() {
+            console.log('API loaded');
+        }, ROOT);
+    }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+</head>
+<body>
+<script>
+function auth() {
+	gapi.auth.authorize({
+		client_id: '603054087850-5qgda69d0j99oja4q5cjbl0mr2cp5s7d.apps.googleusercontent.com',
+		scope: 'https://www.googleapis.com/auth/userinfo.email ',
+		immediate: true
+	}, function() {
+		console.log('auth completed');
+	});
+}
+
+function helloworld() {
+	gapi.client.bobplanetApi.helloworld().execute(function(resp) {
+		console.log(resp.message)
+	});
+}
+</script>
+<input type="button" value="1. AUTH" onclick="javascript:auth()" /> <br />
+<input type="button" value="2. HELLO WORLD" onclick="javascript:helloworld()" /> <br />
+</body>
+</html>
