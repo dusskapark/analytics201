@@ -53,11 +53,17 @@ $(document).ready(function() {
         // $('li').find(item.pkgNm).find('p').text(data.tstore.totalCount)
         console.log(data.tstore.totalCount);
 
-        data.tstore.products.product.forEach(function(v,i){
-          var aid = v;
-          var aidDiv = "<a href='"+ aid.tinyUrl +"' target='_blank'> <p>" + aid.name + "</a></p>";
-          $('li').find(item.pkgNm).find('p').text('OK').append(aidDiv);
-        });
+        var product  = data.tstore.products.product;
+        console.log(product);
+
+        // product.forEach(function(v,i){
+        //   var aid = v;
+        //   var aidDiv = "<a href='"+ aid.tinyUrl +"' target='_blank'> <p>" + aid.name + "</a></p>";
+        //
+        //   $('li').find(item.pkgNm).find('p').text('OK').append(aidDiv)
+        //
+        //
+        // })
 
 
         }
