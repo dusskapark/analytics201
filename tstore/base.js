@@ -13,8 +13,19 @@ $(document).ready(function() {
       });
   };
 
+      callApi(url, response_json)
 
-    callApi(url, response_json)
+randomString = function () {
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+  var string_length = 3;
+  var randomstring = '';
+  for (var i=0; i<string_length; i++) {
+  var rnum = Math.floor(Math.random() * chars.length);
+  randomstring += chars.substring(rnum,rnum+1);
+  }
+  //document.randform.randomfield.value = randomstring;
+  return randomstring;
+  }
 
   // 800개 리스트를 불러온다.
   function response_json (json){
@@ -22,7 +33,7 @@ $(document).ready(function() {
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
-      console.log(item.pkgNm);
+      // console.log(item.pkgNm);
       // console.log(item.prodNm);
 
 
@@ -43,23 +54,8 @@ $(document).ready(function() {
 
       function search_callback( data ) {
 
-        console.log(data.tstore.totalCount);
-        // console.log(data.tstore.products.product);
-        // var contentStr = "";
-        // for (var i = 0; i < list.length; i++) {
-        //   contentStr += list[i].name;
-        // }
-        //
-        // $('#bobcard').append(contentStr + "<br>");
-
-        // product.forEach(function(v,i){
-        //   var aid = v;
-        //   var aidDiv = "<a href='"+ aid.tinyUrl +"' target='_blank'> <p>" + aid.name + "</a></p>";
-        //
-        //   $('li').find(item.pkgNm).find('p').text('OK').append(aidDiv)
-        //
-        //
-        // })
+        console.log(randomString() + data.tstore.totalCount);
+        console.log(data.tstore.products.product);
 
 
         }
