@@ -1,26 +1,21 @@
 $(document).ready(function() {
 
+  function auth() {
+  	gapi.auth.authorize({
+  		client_id: '603054087850-5qgda69d0j99oja4q5cjbl0mr2cp5s7d.apps.googleusercontent.com',
+  		scope: 'https://www.googleapis.com/auth/userinfo.email ',
+  		immediate: true
+  	}, function() {
+  		console.log('auth completed');
+  	});
+  }
+
+  function helloworld() {
+  	gapi.client.bobplanetApi.helloworld().execute(function(resp) {
+  		console.log(resp.message)
+  	});
+  }
 
 
-  function init() {
-    var ROOT = 'https://your_app_id.appspot.com/_ah/api';
-    gapi.client.setApiKey('AIzaSyAbhJQT4oo9TrL94KkJOvEg7AZfCyxMIAc');
-
-    gapi.client.load('menuOfDate', 'v1', function() {
-      doSomethingAfterLoading();
-    }, ROOT);
 
 };
-
-
-  doSomethingAfterLoading = function (json) {
-    var apisToLoad;
-    var callback = function() {
-      if (--apisToLoad == 0) {
-        console.log(json)
-      }
-    }
-
-    apisToLoad = 1; // must match number of calls to gapi.client.load()
-    gapi.client.load('menuOfDate', 'v1', callback, apiRoot);
-  };

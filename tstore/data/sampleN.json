@@ -1,0 +1,11 @@
+{
+    "content": [
+      {"pkgNm":"com.S2Dungeons","prodNm":"S2 던전스","prodID":"1247"},
+      {"pkgNm":"atdata.fortune2","prodNm":"★적중운세★투데이 운세프리2","prodID":"1488"},
+      {"pkgNm":"com.hasapp.app.forsythia","prodNm":"카스토리(CarStory) - 차계부, 연비, 차량관리","prodID":"2097"},
+      {"pkgNm":"com.gameday.RoomBreak1ADGB","prodNm":"방탈출4","prodID":"3625"},
+      {"pkgNm":"com.acton.nakedking2L","prodNm":"네이키드킹2","prodID":"3818"},
+      {"pkgNm":"com.gameday.SnowRain","prodNm":"스노우레인","prodID":"5035"},
+        ],
+    "totalElements": "6"
+}

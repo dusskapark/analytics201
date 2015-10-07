@@ -22,8 +22,18 @@
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+		<!-- Google AppEngine Endpoint API -->
+		<script>
+    function init() {
+        var ROOT = "https://kr-bobplanet.appspot.com/_ah/api";
+        gapi.client.load('bobplanetApi', 'v1', function() {
+            console.log('API loaded');
+        }, ROOT);
+    }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
 		<!-- adsense -->
-		<!-- <script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script> -->
+		<script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
 
 	</head>
 
@@ -53,20 +63,11 @@
 		<div class="container">
 			<div class="section">
 				<div id="bobcard" class="row grid">
-					<output id="outputLog"></output>
 
-			    <form onsubmit="return false;">
-			        <h2>Get Greeting</h2>
-			        <div><label for="id">Greeting ID:</label><input id="id" /></div>
-			        <div><input id="getGreeting" type="submit" class="btn btn-small" value="Submit"></div>
-			    </form>
-
-			    <form onsubmit="return false;">
-			        <h2>List Greetings</h2>
-			        <div><input id="listGreeting" type="submit" class="btn btn-small" value="Submit"></div>
-			    </form>
-
+					<input type="button" value="1. AUTH" onclick="javascript:auth()" /> <br />
+					<input type="button" value="2. HELLO WORLD" onclick="javascript:helloworld()" /> <br />
 				</div>
+
 
 				<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
 			    <a id="scrollTop" class="btn-floating btn-large pink">

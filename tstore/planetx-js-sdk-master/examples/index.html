@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>SKPlanetX JavaScript SDK Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="stylesheet" href="jquery.mobile-1.3.1.min.css"/>
+<script src="jquery-1.8.0.js"></script>
+<script src="jquery.mobile-1.3.1.min.js"></script>
+<script src="../planetxsdk.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+	<div data-role="page" id="page0">
+	<div data-role="header" data-theme="a" data-position="fixed">
+		<h1>PlanetX JS SDK Examples</h1>
+	</div>
+	<div data-role="content">
+		<div>원활한 테스트를 위해 SK planet One ID 를 사용하는 다음 서비스들에 가입되어있어야 합니다.</div>
+		<div>해당 서비스들 : Tcloud, Melon, 11st </div>
+		<h1>OAuth 2.0 : Login()</h1>
+		<div id="status1"></div>
+		<input type="button" onclick="PlanetX.login()" value="Login">
+		<h1>SK plantet One ID : userProfile </h1>
+		<input type="button" onclick="userProfile()" value="Show user information">
+		<div id="profile"></div>
+		<h1> Login Status </h1>
+		<input type="button" onclick="loginStatus()" value="Show Login Status">
+		<div id="status2"></div>
+		<h1> tcloud : api ( ) </h1>
+		<input type="button" onclick="tcloud( tcloud_callback )" value="Show Tcloud latest image">
+		<div id="tcloud"></div>
+		<h1>melon : api ( ) </h1>
+		<input type="button" onclick="melon()" value="Show melon category">
+		<div id='melon'></div>
+		<h1>11st : api ( ) </h1>
+		<form id="search11">
+		<input type="text" name="keyword" value="sk">
+		</form>
+		<input type="button" onclick="search_11st()" value="Show 11st search">
+		<div id='11st'></div>
+		<h1>logout </h1>
+		<input type="button" onclick="logout()" value="Logout">
+	</div><!--End of content-->
+	<div data-role="footer" data-position="fixed">
+		<h2>Powered by SK planet</h2>
+	</div>
+	</div><!--End of page-->
+</body>
+</html>
