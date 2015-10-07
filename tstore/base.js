@@ -23,7 +23,7 @@ $(document).ready(function() {
     NList.forEach(function(v, i) {
       var item = v;
       $('#bobcard').append(item.pkgNm + "<br>");
-      $('#bobcard').append(item.prodNm + "<br>");
+      // $('#bobcard').append(item.prodNm + "<br>");
 
 
       // 플래닛 API를 콜한다
@@ -42,16 +42,14 @@ $(document).ready(function() {
       );
 
       function search_callback( data ) {
-
-        $('#bobcard').append(data.tstore.totalCount + "<br>");
-
-        var list  = $.parseJSON(data.tstore.products.product);
-        var contentStr = "";
-        for (var i = 0; i < list.length; i++) {
-          contentStr += list[i].name;
-        }
-
-        $('#bobcard').append(contentStr + "<br>");
+        $('#bobcard').append(data.tstore.totalCount + "<br><br>");
+        $('#bobcard').append(data.tstore.products.product);
+        // var contentStr = "";
+        // for (var i = 0; i < list.length; i++) {
+        //   contentStr += list[i].name;
+        // }
+        //
+        // $('#bobcard').append(contentStr + "<br>");
 
         // product.forEach(function(v,i){
         //   var aid = v;
