@@ -23,7 +23,7 @@ $(document).ready(function() {
     NList.forEach(function(v, i) {
       var item = v;
       console.log(item.pkgNm);
-      console.log(item.prodNm);
+      // console.log(item.prodNm);
 
 
       // 플래닛 API를 콜한다
@@ -44,7 +44,7 @@ $(document).ready(function() {
       function search_callback( data ) {
 
         console.log(data.tstore.totalCount);
-        console.log(data.tstore.products.product);
+        // console.log(data.tstore.products.product);
         // var contentStr = "";
         // for (var i = 0; i < list.length; i++) {
         //   contentStr += list[i].name;
