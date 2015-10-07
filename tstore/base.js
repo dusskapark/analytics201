@@ -44,13 +44,22 @@ $(document).ready(function() {
         "count": 5,
         "searchKeyword": item.prodNm,
         "order": "R"},
-        search_callback
+        "success": search_callback,
+        "fail": "console.log('fail')"
       );
 
       function search_callback( data ) {
-        $('li').find(item.pkgNm).find('p').text(data.tstore.totalCount)
+        // $('li').find(item.pkgNm).find('p').text(data.tstore.totalCount)
+        console.log(data.tstore.totalCount);
+
         var product  = data.tstore.products.product;
-        console.log(product);
+        product.forEach(function(v,i){
+          var aid = v;
+          var aidDiv = "<a href='"+ aid.tinyUrl +"' target='_blank'> <p>" + aid.name + "</a></p>";
+
+
+        })
+
 
         }
 
