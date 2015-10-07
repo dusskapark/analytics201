@@ -47,13 +47,15 @@ $(document).ready(function() {
       );
 
       function search_callback( data ) {
-
+        $("\"" + "#" + item.pkgNm + "\"").find('p').text(data.tstore.totalCount)
+        var product  = data.tstore.products.product;
+        console.log(product);
 
         }
 
 
     });
-    $('#bobcard').find('p').text('총 상품숫자: 'totalElements)
+    $('#bobcard').find('p').text('총 상품숫자: 'totalElements);
   }
 
 
