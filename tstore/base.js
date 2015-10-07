@@ -20,6 +20,7 @@ $(document).ready(function() {
 
   // 800개 리스트를 불러온다.
   function response_json (json){
+    console.log('success');
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
@@ -47,7 +48,7 @@ $(document).ready(function() {
       );
 
       function search_callback( data ) {
-        $("\"" + "#" + item.pkgNm + "\"").find('p').text(data.tstore.totalCount)
+        $('li').find(item.pkgNm).find('p').text(data.tstore.totalCount)
         var product  = data.tstore.products.product;
         console.log(product);
 
@@ -55,7 +56,7 @@ $(document).ready(function() {
 
 
     });
-    $('#bobcard').find('p').text('총 상품숫자: ' + totalElements);
+    // $('#bobcard').find('p').text('총 상품숫자: ' + totalElements);
   }
 
 
