@@ -42,14 +42,15 @@ $(document).ready(function() {
         "count": 5,
         "searchKeyword": item.prodNm,
         "order": "R"},
-        search_callback
+        search_callback (data, item.pkgNm)
         // "success": search_callback,
         // "fail": "console.log('fail')"
       );
 
-      function search_callback( data ) {
+      function search_callback( data, item.pkgNm ) {
+        var pkgNm = item.pkgNm;
         var badge = "<span class='new badge'>"+ data.tstore.totalCount +"</span>";
-        $('li').children().find(item.pkgNm).append(badge);
+        $('li').children().find(pkgNm).append(badge);
         // console.log(data.tstore.totalCount);
 
         // var product  = data.tstore.products.product;
