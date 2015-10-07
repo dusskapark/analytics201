@@ -49,7 +49,7 @@ $(document).ready(function() {
 
       function search_callback( data ) {
         var badge = "<span class='new badge'>"+ data.tstore.totalCount +"</span>";
-        $('li').find(item.pkgNm).append(badge);
+        $('li').children().find(item.pkgNm).append(badge);
         // console.log(data.tstore.totalCount);
 
         // var product  = data.tstore.products.product;
