@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 
     });
-    $('#bobcard').find('p').text('총 상품숫자: 'totalElements);
+    $('#bobcard').find('p').text('총 상품숫자: ' + totalElements);
   }
 
 
