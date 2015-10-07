@@ -14,13 +14,13 @@ $(document).ready(function() {
   };
 
   $('#bobcard').click(function(){
-    console.log('click');
+
     callApi(url, response_json)
   });
 
   // 800개 리스트를 불러온다.
   function response_json (json){
-    console.log('success');
+
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
@@ -57,6 +57,8 @@ $(document).ready(function() {
         product.forEach(function(v,i){
           var aid = v;
           var aidDiv = "<a href='"+ aid.tinyUrl +"' target='_blank'> <p>" + aid.name + "</a></p>";
+
+          $('li').find(item.pkgNm).find('p').text('OK').append(aidDiv);
 
 
         })
