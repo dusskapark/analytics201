@@ -22,8 +22,8 @@ $(document).ready(function() {
     var NList = json.content;
     NList.forEach(function(v, i) {
       var item = v;
-      $('#bobcard').append(item.pkgNm);
-      $('#bobcard').append(item.prodNm);
+      $('#bobcard').append(item.pkgNm + "<br>");
+      $('#bobcard').append(item.prodNm + "<br>");
 
 
       // 플래닛 API를 콜한다
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
       function search_callback( data ) {
 
-        $('#bobcard').append(data.tstore.totalCount);
+        $('#bobcard').append(data.tstore.totalCount + "<br>");
 
         var list  = $.parseJSON(data.tstore.products.product);
         var contentStr = "";
@@ -51,7 +51,7 @@ $(document).ready(function() {
           contentStr += list[i].name;
         }
 
-        $('#bobcard').append(contentStr);
+        $('#bobcard').append(contentStr + "<br>");
 
         // product.forEach(function(v,i){
         //   var aid = v;
