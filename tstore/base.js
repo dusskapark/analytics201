@@ -26,7 +26,7 @@ $(document).ready(function() {
       var collapsible ="<li class='collection-item avatar' id='"+ item.pkgNm +"'>" +
       "<img width='28px' height='28px' src='http://tv03.search.naver.net/thm?quality=5&q=https://phinf.pstatic.net/blogpfthumb/20140305_226/nvappstore_1394012930943lHElx_PNG/android_512X512_googleplay.png?type=s40' class='circle'>"+
       "<span class='title'>"+ item.prodNm +"</span>"+
-          "<p>Lorem ipsum dolor sit amet.</p>"+
+          // "<p>Lorem ipsum dolor sit amet.</p>"+
         "</li>";
 
       $("#bobcard").append(collapsible);
@@ -48,11 +48,12 @@ $(document).ready(function() {
       );
 
       function search_callback( data ) {
-        // $('li').find(item.pkgNm).find('p').text(data.tstore.totalCount)
-        console.log(data.tstore.totalCount);
+        var badge = "<span class='new badge'>"+ data.tstore.totalCount +"</span>";
+        $('li').find(item.pkgNm).append(badge);
+        // console.log(data.tstore.totalCount);
 
-        var product  = data.tstore.products.product;
-        console.log(product);
+        // var product  = data.tstore.products.product;
+        // console.log(product);
 
         // product.forEach(function(v,i){
         //   var aid = v;
