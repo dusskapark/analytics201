@@ -13,10 +13,8 @@ $(document).ready(function() {
       });
   };
 
-  $('#bobcard').click(function(){
 
     callApi(url, response_json)
-  });
 
   // 800개 리스트를 불러온다.
   function response_json (json){
