@@ -44,7 +44,7 @@ $(document).ready(function() {
       function search_callback( data ) {
 
         $('#bobcard').append(data.tstore.totalCount + "<br>");
-        $('#bobcard').append(data.tstore.products.product);
+        $('#bobcard').append(data.tstore.products.product +  + "<br><br>");
         // var contentStr = "";
         // for (var i = 0; i < list.length; i++) {
         //   contentStr += list[i].name;
