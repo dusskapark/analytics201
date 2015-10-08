@@ -13,19 +13,10 @@ $(document).ready(function() {
       });
   };
 
-      callApi(url, response_json)
+  $('#bobcard').click(function(){
+    callApi(url, response_json);
 
-// randomString = function () {
-//   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-//   var string_length = 3;
-//   var randomstring = '';
-//   for (var i=0; i<string_length; i++) {
-//   var rnum = Math.floor(Math.random() * chars.length);
-//   randomstring += chars.substring(rnum,rnum+1);
-//   }
-//   //document.randform.randomfield.value = randomstring;
-//   return randomstring;
-//   }
+  });
 
   // 800개 리스트를 불러온다.
   function response_json (json){
