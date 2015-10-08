@@ -15,27 +15,26 @@ $(document).ready(function() {
 
       callApi(url, response_json)
 
-randomString = function () {
-  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-  var string_length = 3;
-  var randomstring = '';
-  for (var i=0; i<string_length; i++) {
-  var rnum = Math.floor(Math.random() * chars.length);
-  randomstring += chars.substring(rnum,rnum+1);
-  }
-  //document.randform.randomfield.value = randomstring;
-  return randomstring;
-  }
+// randomString = function () {
+//   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+//   var string_length = 3;
+//   var randomstring = '';
+//   for (var i=0; i<string_length; i++) {
+//   var rnum = Math.floor(Math.random() * chars.length);
+//   randomstring += chars.substring(rnum,rnum+1);
+//   }
+//   //document.randform.randomfield.value = randomstring;
+//   return randomstring;
+//   }
 
   // 800개 리스트를 불러온다.
   function response_json (json){
+    var list = $.parseJSON(json);
+    var listLen = list.length;
+    var search_callback ="";
+    var contentStr = "";
 
-    var NList = json.content;
-    NList.forEach(function(v, i) {
-      var item = v;
-      // console.log(item.pkgNm);
-      // console.log(item.prodNm);
-
+    for(var i=0; i<listLen; i++){
 
       // 플래닛 API를 콜한다
       PlanetX.api(
@@ -45,22 +44,23 @@ randomString = function () {
         {"version": 1,
         "page": 1,
         "count": 5,
-        "searchKeyword": item.prodNm,
+        "searchKeyword": list[i].prodNm,
         "order": "R"},
         search_callback
       );
 
       function search_callback( data ) {
+         var search_callback = data.tstore.totalCount;
 
-        console.log(randomString() + data.tstore.totalCount);
-        // console.log(data.tstore.products.product);
-
-
+         contentStr += "<tr>"+
+             "<td>"+ list[i].pkgNm + "</td>" +
+             "<td>"+ list[i].prodNm + "</td>" +
+             "<td>"+ search_callback +"</td>"+
+           "</tr>";
         }
+      }
 
-
-    });
-    // $('#bobcard').find('p').text('총 상품숫자: ' + totalElements);
+      $('#bobcard').find('tbody').append(table);
   }
 
 
