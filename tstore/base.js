@@ -20,39 +20,82 @@ $(document).ready(function() {
 
   // 800개 리스트를 불러온다.
   function response_json (json){
-    var list = $.parseJSON(json);
+
+    var list = json.content;
     var listLen = list.length;
     var search_callback ="";
     var contentStr = "";
-
     for(var i=0; i<listLen; i++){
+      $.each(list, function(i, item){
+        // // 플래닛 API를 콜한다
+        // PlanetX.api(
+        //   "get",
+        //   "http://apis.skplanetx.com/tstore/products",
+        //   "JSON",
+        //   {"version": 1,
+        //   "page": 1,
+        //   "count": 5,
+        //   "searchKeyword": list[i].prodNm,
+        //   "order": "R"},
+        //   search_callback
+        // );
+        //
+          // function search_callback( data ) {
+            //  var search_callback = data.tstore.totalCount;
 
-      // 플래닛 API를 콜한다
-      PlanetX.api(
-        "get",
-        "http://apis.skplanetx.com/tstore/products",
-        "JSON",
-        {"version": 1,
-        "page": 1,
-        "count": 5,
-        "searchKeyword": list[i].prodNm,
-        "order": "R"},
-        search_callback
-      );
+            //  contentStr += "<tr>"+
+            //      "<td>"+ list[i].pkgNm + "</td>" +
+            //      "<td>"+ list[i].prodNm + "</td>" +
+            //     //  "<td>"+ search_callback +"</td>"+
+            //    "</tr>";
+          // }
 
-      function search_callback( data ) {
-         var search_callback = data.tstore.totalCount;
+          contentStr += "<tr>"+
+              "<td>"+ list[i].pkgNm + "</td>" +
+              "<td>"+ list[i].prodNm + "</td>" +
+             //  "<td>"+ search_callback +"</td>"+
+            "</tr>";
 
-         contentStr += "<tr>"+
-             "<td>"+ list[i].pkgNm + "</td>" +
-             "<td>"+ list[i].prodNm + "</td>" +
-             "<td>"+ search_callback +"</td>"+
-           "</tr>";
-        }
-      }
+    });
+}
 
-      $('#bobcard').find('tbody').append(table);
-  }
+$('#bobcard').find('tbody').append(contentStr);
+}
+    // forEach(function(v, i) {
+    //   var item = v;
+
+    // var listLen = list.length;
+    // var search_callback ="";
+    // var contentStr = "";
+    //
+    // for(var i=0; i<listLen; i++){
+    //
+    //   // 플래닛 API를 콜한다
+    //   PlanetX.api(
+    //     "get",
+    //     "http://apis.skplanetx.com/tstore/products",
+    //     "JSON",
+    //     {"version": 1,
+    //     "page": 1,
+    //     "count": 5,
+    //     "searchKeyword": list[i].prodNm,
+    //     "order": "R"},
+    //     search_callback
+    //   );
+    //
+    //   function search_callback( data ) {
+    //      var search_callback = data.tstore.totalCount;
+    //
+    //      contentStr += "<tr>"+
+    //          "<td>"+ list[i].pkgNm + "</td>" +
+    //          "<td>"+ list[i].prodNm + "</td>" +
+    //          "<td>"+ search_callback +"</td>"+
+    //        "</tr>";
+    //     }
+    //   }
+    //
+    //   $('#bobcard').find('tbody').append(table);
+  // }
 
 
 
