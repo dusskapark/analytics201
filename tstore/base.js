@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-  url = "./tstore/data/sampleN.json";
+  url = "./data/sampleN.json";
   PlanetX.init({appkey : "a2121b2c-529a-31e1-9550-2606b1196ac3"});
 
   callApi = function( url, successFn ) {
