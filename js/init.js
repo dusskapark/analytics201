@@ -10,12 +10,41 @@ doSomethingAfterLoading = function () {
     immediate: true
   }, function() {
     console.log('auth completed');
-  });
-
-  gapi.client.bobplanetApi.helloworld().execute(function(resp) {
-    console.log(resp.message)
+    makeApiCall()
   });
 }
+
+
+// Load the API and make an API call.  Display the results on the screen.
+function makeApiCall() {
+
+  gapi.client.bobplanetApi.bobplanetApi.menuOfDate({'date': '2015-10-05'}.then(function(resp) {
+  console.log(resp.result);
+}, function(reason) {
+  console.log('Error: ' + reason.result.error.message);
+});
+
+  // // Step 4: Load the Google+ API
+  // gapi.client.load('plus', 'v1').then(function() {
+  //   // Step 5: Assemble the API request
+  //   var request = gapi.client.plus.people.get({
+  //     'userId': 'me'
+  //   });
+  //   // Step 6: Execute the API request
+  //   request.then(function(resp) {
+  //     var heading = document.createElement('h4');
+  //     var image = document.createElement('img');
+  //     image.src = resp.result.image.url;
+  //     heading.appendChild(image);
+  //     heading.appendChild(document.createTextNode(resp.result.displayName));
+  //
+  //     document.getElementById('content').appendChild(heading);
+  //   }, function(reason) {
+  //     console.log('Error: ' + reason.result.error.message);
+  //   });
+  // });
+}
+</script>
 
 
 
