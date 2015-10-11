@@ -46,11 +46,8 @@
 	left: 50px;
 }
 
-.grid-item {
-	float: left;
-	min-width: 300px !important;
-	/*max-width: 500px;*/
-}
+.grid-item { width: 25%; }
+.grid-item--width2 { width: 50%; }
 
 #responsive-image {
 	width: 80%;
