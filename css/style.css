@@ -46,8 +46,12 @@
 	left: 50px;
 }
 
-.grid-item { width: 25%; }
-.grid-item--width2 { width: 50%; }
+.grid-item {
+	float: left;
+	min-width: 300px !important;
+  /*max-height: 550px !important;*/
+	/*max-width: 500px;*/
+}
 
 #responsive-image {
 	width: 80%;
