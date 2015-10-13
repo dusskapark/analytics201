@@ -84,7 +84,8 @@ function response_json(json) {
       "<li class=\"prev\" data-id='"+ json.previousDate +"'>" +
         "<div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>"+ json.previousDate +"</div>" +
         "<div class=\"collapsible-body\">"+
-          "<p>Lorem ipsum dolor sit amet.</p>"+
+          "<div class=\"row\">"+
+          "</div>" +
         "</div>" +
       "</li>" +
       "<li data-id=\""+ json.date +"\">" +
@@ -98,7 +99,8 @@ function response_json(json) {
       "<li class=\"next\" data-id='"+ json.nextDate +"'>" +
         "<div class=\"collapsible-header\"><i class=\"material-icons\">whatshot</i>"+ json.nextDate +"</div>" +
         "<div class=\"collapsible-body\">"+
-          "<p>Lorem ipsum dolor sit amet.</p>"+
+          "<div class=\"row\">"+
+          "</div>" +
         "</div>" +
       "</li>";
 
@@ -114,69 +116,63 @@ function response_json(json) {
 
   $("body").on("click", ".prev", function ( e ) {
     // body...
-    var clickedDate = $(this).attr('data-id');
-    // $(this).removeClass('prev');
+    clickedDate = $(this).attr('data-id');
     makeApiCall(clickedDate, response_prev);
+    $(this).removeClass('prev');
+
   });
 
 
+function response_prev(json) {
 
-    var request = gapi.client.bobplanetApi.menuOfDate({
-      'date': clickedDate
-    });
-    request.then(function(resp) {
-      var dailyList = resp.result.menu;
-      console.log(dailyList);
-      // var $menuOfDate = "";
-      // $.each(dailyList, function (i, v) {
-      //   // body...
-      //   $menuOfDate = "" +
-      //     "<div class=\"col s12 m6 l3\">" +
-      //       "<div class=\"card medium\">" +
+  var dailyList = json.menu;
 
-      //         "<div class=\"card-image waves-effect waves-block waves-light\">" +
-      //           "<img height='230px' src=\""+ v.item.iconURL +"\" class=\"activator\">" +
-      //           "<span class=\"card-title truncate\">"+ v.item.id +"</span>" +
-      //         "</div>" +
-      //         "<div class=\"card-content\">" +
-      //           "<span class='card-title activator grey-text text-darken-4 truncate'><i class=\"material-icons circle\">access_time</i>" + v.when + "</span>" +
-      //           "<p class='activator' alt='description'>뭘 넣어야 할지는 모르겠으니깐 일단은 아무거나 넣어두려고 합니다. 글자수가 많으면 어떻게 되는지도 궁금하네요 </p>" +  
-      //         "</div>" +
-      //         "<div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\">매뉴 평가<i class=\"material-icons right close\">close</i></span>"+
-      //           "<div class='container center-align'>" +
-      //             "<i class=\"fa fa-heart\"></i> " +
-      //             "<i class=\"fa fa-heart\"></i> " +
-      //             "<i class=\"fa fa-heart\"></i> " +
-      //             "<i class=\"fa fa-heart-o\"></i> " +
-      //             "<i class=\"fa fa-heart-o\"></i> " +
-      //             "<p class='left-align' alt='description'>" + v.item.submenu + "</p>" +
-      //           "</div>" +
-      //         "</div>" +
-
-      //       "</div>" +
-      //     "</div>";
-      //   $(this).find(".collapsible-body").append($menuOfDate);
-      //   });
-
-        // $(this).find("collapsible-body > p").remove()
-
-
-        $days = "" +
-          "<li class=\"prev\" data-id='"+ resp.result.previousDate +"'>" +
-            "<div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>"+ resp.result.previousDate +"</div>" +
-            "<div class=\"collapsible-body\">"+
-              "<p>Lorem ipsum dolor sit amet.</p>"+
+  var $menuOfDate = "";
+  $.each(dailyList, function (i, v) {
+    console.log(v)
+    // body...
+    $menuOfDate += "" +
+      "<div class=\"col s12 m6 l3\">" +
+        "<div class=\"card medium\">" +
+          "<div class=\"card-image waves-effect waves-block waves-light\">" +
+            "<img height='230px' src=\""+ v.item.iconURL +"\" class=\"activator\">" +
+            "<span class=\"card-title truncate\">"+ v.item.id +"</span>" +
+          "</div>" +
+          "<div class=\"card-content\">" +
+            "<span class='card-title activator grey-text text-darken-4 truncate'><i class=\"material-icons circle\">access_time</i>" + v.when + "</span>" +
+            "<p class='activator' alt='description'>뭘 넣어야 할지는 모르겠으니깐 일단은 아무거나 넣어두려고 합니다. 글자수가 많으면 어떻게 되는지도 궁금하네요 </p>" +  
+          "</div>" +
+          "<div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\">매뉴 평가<i class=\"material-icons right close\">close</i></span>"+
+            "<div class='container center-align'>" +
+              "<i class=\"fa fa-heart\"></i> " +
+              "<i class=\"fa fa-heart\"></i> " +
+              "<i class=\"fa fa-heart\"></i> " +
+              "<i class=\"fa fa-heart-o\"></i> " +
+              "<i class=\"fa fa-heart-o\"></i> " +
+              "<p class='left-align' alt='description'>" + v.item.submenu + "</p>" +
             "</div>" +
-          "</li>";
-
-        $(this).prepend($days);
-
-    }, function(reason) {
-      console.log('Error: ' + reason.result.error.message);
+          "</div>" +
+        "</div>" +
+      "</div>";    
     });
-  });
+// $('[data-id=2015-10-12]')
+    $("li.active").find('.row').append($menuOfDate);
+
+    $days = "" +
+      "<li class=\"prev\" data-id='"+ json.previousDate +"'>" +
+        "<div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>"+ json.previousDate +"</div>" +
+        "<div class=\"collapsible-body\">"+
+          "<div class=\"row\">"+
+          "</div>" +
+        "</div>" +
+      "</li>";
+
+    $("#bobcard").prepend($days);
+
+
+    // $(this).find("collapsible-body > p").remove()
+};
 
 
 
-
-});
+}); // jQuery 끝 
